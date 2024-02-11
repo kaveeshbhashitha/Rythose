@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <title>@ViewData["Title"] - Raythos Aerospace</title>
+    <link rel="stylesheet" type="text/css" href="~/web/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/web/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="~/web/assets/css/style.css">
+
+    <style>
+        .btnblue:hover {
+            background-color: darkblue !important;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+
+        /* For Firefox */
+        body {
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f1f1f1;
+        }
+
+        body::-webkit-scrollbar-corner {
+            background-color: #f1f1f1;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">Raythos <em> Aerospace</em></a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a asp-action="Index" asp-controller="Home" id="homeTab">Home</a></li>
+                            <li><a asp-action="ListView" asp-controller="Aircraft" id="aircraftTab">Aircrafts</a></li>
+                            <li><a asp-action="About" asp-controller="Home" id="aboutTab">About</a></li>
+                            @if (Context.Session.GetString("LoggedIn") == "True")
+                                {
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                            aria-haspopup="true" aria-expanded="false" id="myAccount">My Account</a>
+
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" asp-action="CustomerProfile" asp-controller="Customer">Profile</a>
+                                            <a class="dropdown-item" asp-action="OwnAircrafts" asp-controller="Customer">Aircrafts</a>
+                                            <a class="dropdown-item" asp-action="OrderHistory" asp-controller="Customer">Order History</a>
+                                            <a class="dropdown-item" asp-action="Logout" asp-controller="Customer">Logout</a>
+                                        </div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li><a asp-action="Login" asp-controller="Customer">Log In</a></li>
+                                    <li><a asp-action="Register" asp-controller="Customer" asp-route-id="0">Sign Up</a></li>
+                                }
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    @RenderBody()
+
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start text-white" style="background-color: #1c2331">
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="text-align: left;">
+                        <h6 class="text-uppercase fw-bold">Raythos <em class="text-primary">Aerospace</em></h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #0059b3; height: 2px" />
+                        <p style="color:whitesmoke">
+                            Unleashing Innovation, Soaring Beyond Limits - Your Gateway to Aerospace
+                            Advancements and Beyond..
+                        </p>
+                    </div>
+
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" style="text-align: left;">
+                        <h6 class="text-uppercase fw-bold">Products</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #0059b3; height: 2px" />
+                        <p>
+                            <a asp-action="ListView" asp-controller="Aircraft" class="text-white">Private Jet for Sale</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">Private Jet Rental</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">Jet Repair</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">After services</a>
+                        </p>
+                    </div>
+
+
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="text-align: left;">
+                        <h6 class="text-uppercase fw-bold">Useful links</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #0059b3; height: 2px" />
+                        <p>
+                            <a href="https://www.faa.gov/" class="text-white">Civil Avaiation Authority</a>
+                        </p>
+                        <p>
+                            <a href="https://www.rtx.com/" class="text-white">Raythos Airlines</a>
+                        </p>
+                        <p>
+                            <a href="https://icao.int/" class="text-white">ICAO - World</a>
+                        </p>
+                        <p>
+                            <a href="https://www.defense.gov/" class="text-white">Ministry of Defence</a>
+                        </p>
+                    </div>
+
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="text-align: left;">
+                        <h6 class="text-uppercase fw-bold">Contact</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #0059b3; height: 2px" />
+                        <p style='color:white'>New York, NY 10012, US</p>
+                        <p style='color:white'>info@example.com</p>
+                        <p style='color:white'> + 01 234 567 88</p>
+                        <p style='color:white'> + 01 234 567 89</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer -->
+    <!-- jQuery -->
+    <script src="~/web/assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/web/assets/js/popper.js"></script>
+    <script src="~/web/assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="~/web/assets/js/scrollreveal.min.js"></script>
+    <script src="~/web/assets/js/waypoints.min.js"></script>
+    <script src="~/web/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/web/assets/js/imgfix.min.js"></script>
+    <script src="~/web/assets/js/mixitup.js"></script>
+    <script src="~/web/assets/js/accordions.js"></script>
+
+    <!-- Global Init -->
+    <script src="~/web/assets/js/custom.js"></script>
+
+</body>
+
+</html>

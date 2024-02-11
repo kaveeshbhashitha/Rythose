@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Aircraft Gallery";
+    Layout = "../Shared/web_layout.cshtml";
+}
+
+
+<script>
+    var myLinkElement = document.getElementById("aircraftTab");
+    myLinkElement.classList.toggle("active");
+</script>
+
+<style>
+    #backbtn:hover{
+        background-color:lavender !important;
+    }
+</style>
+
+<!-- ***** Call to Action Start ***** -->
+<section class="section section-bg" id="call-to-action" style="background-image: url('/web/assets/images/back8.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2> <em>@ViewBag.Aircraft.ModelName</em></h2>
+                    <p style="font-size:22px">$@ViewBag.Aircraft.Price.ToString("N2")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+<!-- ***** Fleet Starts ***** -->
+<br>
+<br>
+
+<section class="section" id="trainers">
+    <div class="container">
+        @using (Html.BeginForm("temp_order", "Order", FormMethod.Post))
+        {
+        <form>
+        <center>
+            <label style="font-size:20px">
+                Craft your ideal Aircraft Configuration with our customization
+                options
+            </label>
+        </center>
+        <br><br>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="d-block w-100" style="height: 350px; object-fit: cover;" src="~/uploads/@ViewBag.Aircraft.FrontImage1"
+                     alt="Second slide">
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row contact-form">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Seating Options:</label>
+                            <select name="seatOpt" required>
+                                <option value="">- Please Select -</option>
+                                @foreach (var cat in ViewBag.SubCategories)
+                                {
+                                    if (@cat.MainId == 1)
+                                    {
+                                        <option value="@cat.SubId">@cat.SubCategoryName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Interior Design:</label>
+                            <select name="intOpt" required>
+                                <option value="">- Please Select -</option>
+                                @foreach (var cat in ViewBag.SubCategories)
+                                {
+                                    if (@cat.MainId == 2)
+                                    {
+                                        <option value="@cat.SubId">@cat.SubCategoryName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  contact-form">
+                        <div class="form-group">
+                            <label>Connectivity Options:</label>
+                            <select name="conOpt" required>
+                                <option value="">- Please Select -</option>
+                                @foreach (var cat in ViewBag.SubCategories)
+                                {
+                                    if (@cat.MainId == 3)
+                                    {
+                                        <option value="@cat.SubId">@cat.SubCategoryName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div>
+                            <label>Entertainment Options:</label>
+                            @foreach (var cat in ViewBag.SubCategories)
+                                {
+                                    if (@cat.MainId == 4)
+                                    {
+                                        <div>
+                                                <input type="radio"  name="entOpt" value="@cat.SubId">
+                                        <label style="font-size:12px" for="displayScreens">@cat.SubCategoryName</label>
+                                        </div>
+                                    }
+                                }
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <br>
+                <p>
+                    @ViewBag.Aircraft.Description.
+                </p>
+                <br><br>
+                <div class="main-button" style="float:right">
+                    <a id="backbtn" asp-action="SingleDetail" asp-controller="Aircraft" asp-route-id="@ViewBag.Aircraft.AircraftId" style="border:1px solid #0073e6;color:#0073e6;background-color: aliceblue;">Back</a> &nbsp;
+                            <input type="hidden" value="@ViewBag.Aircraft.AircraftId" name="AircraftId" />
+                            <input type="submit" style="border:1px solid #0073e6;padding:11px;background-color:#0073E6;color:white" class=" btnblue" value="Checkout">
+                </div>
+            </div>
+        </div>
+
+
+        </form>
+        }
+    </div>
+</section>
+<!-- ***** Fleet Ends ***** -->

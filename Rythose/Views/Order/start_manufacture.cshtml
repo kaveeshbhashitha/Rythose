@@ -1,0 +1,260 @@
+﻿@using Raythose.Models
+
+@{
+    ViewData["Title"] = "Order Processing";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#orderManagement").addClass("active");
+        $("#order_list").addClass("active");
+        $("#orderManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Order Processing</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>
+                            Aircraft Manufacture Resource Allocate
+                        </p>
+                    </div>
+
+                    <div class="x_content">
+                        @using (Html.BeginForm("submit_manufacture", "Order", FormMethod.Post))
+                        {
+                        <form>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img src="~/uploads/@Model.Aircraft.FrontImage1" alt="" style="width:80%">
+                                        <p style="font-size:24px;color:#006699;margin-top:10px">
+                                            @Model.Aircraft.ModelName
+                                        </p>
+                                        <p style="line-height: 25px;">
+                                            <b>Seating -</b> @Model.SeatingOption.SubCategoryName <br>
+                                            <b>Interior -</b> @Model.InteriorDesign.SubCategoryName<br>
+                                            <b>Connectivity -</b> @Model.ConnectivityOption.SubCategoryName<br>
+                                            <b>Entertainment -</b> @Model.EntertainmentOption.SubCategoryName
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="col-form-label" style="color:#00b3b3;font-weight:bold">
+                                            Manufacture Start Date
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input class="date-picker form-control"  required name="OrderDate" placeholder="dd-mm-yyyy" type="date">
+                                        <br>
+                                        <label class="col-form-label" style="color:#00b3b3;font-weight:bold">
+                                            Interior Materials <span class="required">*</span>
+                                        </label>
+                                        <div class="row">
+                                            @foreach (var item in Model.InteriorItemList)
+                                            {
+                                                <div class="checkbox col-lg-6">
+                                                    <label>
+                                                        <input type="checkbox" class="interior-checkbox" name="InteriorMaterials" value="@item.Value"> @item.Text
+                                                    </label>
+                                                </div>
+                                            }
+                                        </div>
+                                        <br>
+                                        <label class="col-form-label" style="color:#00b3b3;font-weight:bold">
+                                            Entertainment Options
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="row">
+                                            @foreach (var item in Model.EntertainmentItemList)
+                                            {
+                                                <div class="checkbox col-lg-6">
+                                                    <label>
+                                                        <input type="checkbox" class="entertainment-checkbox" name="EntertainmentOptions" value="@item.Value"> @item.Text
+                                                    </label>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label class="col-form-label" style="color:#00b3b3;font-weight:bold">
+                                            @Model.SeatingOption.SubCategoryName Items<span class="required">*</span>
+                                        </label>
+                                        <select class="select2_single form-control" name="SeatingOption" required tabindex="-1">
+                                            <option value="">Select seating</option>
+                                            @foreach (var item in Model.SeatingItemList)
+                                            {
+                                                <option value="@item.Value">@item.Text</option>
+                                            }
+                                        </select>
+
+                                        <br>
+
+                                        <label class="col-form-label" style="color:#00b3b3;font-weight:bold">
+                                            Connectivity Options <span class="required">*</span>
+                                        </label>
+
+                                        <div class="row">
+                                            @foreach (var item in Model.ConnectivityItemList)
+                                            {
+                                                <div class="checkbox col-lg-6">
+                                                    <label>
+                                                        <input type="checkbox" class="connectivity-checkbox" name="ConnectivityOptions" value="@item.Value"> @item.Text
+                                                    </label>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <hr>
+                                        <center>
+                                            <label class="col-form-label" style="font-size:medium;">
+                                                Main Essential Parts <br> <br />
+                                            </label>
+                                        </center>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="col-form-label" style="color:#00b3b3;font-weight:bold">
+                                            Select Airframe
+                                            <span class="required">*</span>
+                                        </label>
+                                        <br>
+                                        @foreach (var item in Model.AirframeItemList)
+                                        {
+                                            <div class="checkbox col-lg-12">
+                                                <label>
+                                                    <input type="checkbox" class="airframe-checkbox" name="Airframe" value="@item.Value"> @item.Text
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <label class="col-form-label" style="color:#00b3b3;font-weight:bold">
+                                            Select Powerplant
+                                            <span class="required">*</span>
+                                        </label>
+                                        <br>
+                                        @foreach (var item in Model.PowerplantItemList)
+                                        {
+                                            <div class="checkbox col-lg-12">
+                                                <label>
+                                                    <input type="checkbox" class="powerplant-checkbox" name="Powerplant" value="@item.Value"> @item.Text
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <label class="col-form-label" style="color:#00b3b3;font-weight:bold">
+                                            Select Avionics
+                                            <span class="required">*</span>
+                                        </label>
+                                        <br>
+                                        @foreach (var item in Model.AvionicsItemList)
+                                        {
+                                            <div class="checkbox col-lg-12">
+                                                <label>
+                                                    <input type="checkbox" class="avionics-checkbox" name="Avionics" value="@item.Value"> @item.Text
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <label class="col-form-label" style="color:#00b3b3;font-weight:bold">
+                                            Miscellaneous Components
+                                            <span class="required">*</span>
+                                        </label>
+                                        <br>
+                                        @foreach (var item in Model.MiscellaneousItemList)
+                                        {
+                                            <div class="checkbox col-lg-12">
+                                                <label>
+                                                    <input type="checkbox" class="miscellaneous-checkbox" name="MiscellaneousComponents" value="@item.Value"> @item.Text
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <input type="hidden" name="OrderId" value="@Model.Order.OrderId" />
+                                        <input type="submit" class="btn btn-small btn-success" style="float:right" value="Start Manufacturing">
+                                    </div>
+                                </div>
+
+                        </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+</div>
+<!-- /page content -->
+
+<script>
+    function updateSelectedItems() {
+        var interiorMaterials = getSelectedValues("InteriorMaterials");
+        var entertainmentOptions = getSelectedValues("EntertainmentOptions");
+        var seatingOption = getSelectedValue("SeatingOption");
+        var connectivityOptions = getSelectedValues("ConnectivityOptions");
+
+        // Update hidden inputs with selected values
+        document.getElementById("SelectedInteriorMaterials").value = interiorMaterials.join(",");
+        document.getElementById("SelectedEntertainmentOptions").value = entertainmentOptions.join(",");
+        document.getElementById("SelectedSeatingOption").value = seatingOption;
+        document.getElementById("SelectedConnectivityOptions").value = connectivityOptions.join(",");
+    }
+
+    function getSelectedValues(groupName) {
+        var checkboxes = document.querySelectorAll('input[name="' + groupName + '"]:checked');
+        return Array.from(checkboxes).map(function (checkbox) {
+            return checkbox.value;
+        });
+    }
+
+    function getSelectedValue(groupName) {
+        var selectedOption = document.querySelector('select[name="' + groupName + '"]');
+        return selectedOption ? selectedOption.value : "";
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Attach an event listener to the form submission
+        $('form').submit(function (event) {
+            // Check if at least one checkbox with the specified class is checked in each group
+            var groups = ['interior', 'connectivity', 'airframe', 'powerplant', 'avionics', 'miscellaneous'];
+            for (var i = 0; i < groups.length; i++) {
+                var className = groups[i] + '-checkbox';
+                if ($('.' + className + ':checked').length === 0) {
+                    alert('Please check at least one checkbox in the ' + groups[i] + ' group.');
+                    event.preventDefault();
+                    return;
+                }
+            }
+        });
+    });
+</script>

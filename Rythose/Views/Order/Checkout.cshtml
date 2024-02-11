@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Checkout";
+    Layout = "../Shared/web_layout.cshtml";
+}
+
+
+<script>
+    var myLinkElement = document.getElementById("aircraftTab");
+    myLinkElement.classList.toggle("active");
+</script>
+
+<!-- ***** Call to Action Start ***** -->
+<section class="section section-bg" id="call-to-action" style="background-image: url('/web/assets/images/back8.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2> <em>Checkout</em></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+<!-- ***** Fleet Starts ***** -->
+<br>
+<br>
+
+<section class="section" id="trainers">
+    <div class="container">
+        <br><br>
+        <div class="row">
+            <div class="col-lg-6">
+                <img style="height: 180px; width:250px;object-fit: cover;margin-bottom:5px" src="~/uploads/@Model.Aircraft.FrontImage1"
+                     alt="Second slide">
+                <p style="float:right;text-align:right">
+                    <span style="font-size:20px;color:#0073e6">@Model.Aircraft.ModelName </span><br>
+                    <span style="font-size:17px;color:#808080">$@Model.Aircraft.Price.ToString("N2") </span>
+                </p>
+                <br><br>
+                <p><b>Seating -</b> 
+                    @foreach (var cat in ViewBag.SubCategories)
+                     {
+                        if (@cat.SubId == @Model.Seating)
+                        {
+                            @cat.SubCategoryName;
+                        }
+                    }
+                </p>
+                <p><b>Interior -</b>
+                    @foreach (var cat in ViewBag.SubCategories)
+                    {
+                        if (@cat.SubId == @Model.Interior)
+                        {
+                            @cat.SubCategoryName
+                            ;
+                        }
+                    }
+                </p>
+                <p><b>Connectivity -</b> 
+                    @foreach (var cat in ViewBag.SubCategories)
+                    {
+                        if (@cat.SubId == @Model.Connectivity)
+                        {
+                            @cat.SubCategoryName
+                            ;
+                        }
+                    }
+                </p>
+                <p><b>Entertainment -</b> 
+                    @foreach (var cat in ViewBag.SubCategories)
+                    {
+                        if (@cat.SubId == @Model.Entertainment)
+                        {
+                            @cat.SubCategoryName
+                            ;
+                        }
+                    }
+                </p>
+
+                <hr>
+                <div class="row datadiv">
+                    <div class="col-lg-6">
+                        <label style="font-size:14px !important">
+                            Passenger Capacity: <br> <span style="color:#808080">
+                                @Model.Aircraft.Baggage max
+                            </span>
+                        </label>
+                        <br><label style="font-size:14px !important">
+                            Cabin Dimensions:<br> <span style="color:#808080">
+                                Width @Model.Aircraft.CabinWidth ft
+                                <br>Height @Model.Aircraft.CabinHeight ft
+                                <br>Length @Model.Aircraft.CabinLength ft
+                            </span>
+                        </label>
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label style="font-size:14px !important">
+                            Baggage Capacity:<br> <span style="color:#808080">
+                                @Model.Aircraft.Baggage cu. ft
+                            </span>
+                        </label>
+                        <br><label style="font-size:14px !important">Range:<br> <span style="color:#808080">@Model.Aircraft.Range Hours</span></label>
+                        <br><label style="font-size:14px !important">
+                            Speed:<br> <span style="color:#808080">
+                                @Model.Aircraft.Speed
+                                knots
+                            </span>
+                        </label>
+
+                        <br>
+                    </div>
+                    <div class="col-lg-12">
+                        <br>
+                        <p style="text-align: justify;">
+                            @Model.Aircraft.Description
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5"
+                 style="height:520px;background-color: #f2f2f2;padding:20px;padding-left: 25px;padding-right: 25px;">
+                <center>
+                    Receipt Summary <br>
+                    <hr>
+                </center>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Sub Total</p> <br>
+                        <p>Seating </p><br>
+                        <p>Interior</p><br>
+                        <p>Connectivity Plan</p><br>
+                        <p>Entertaintment Plan</p><br>
+                        <p>Vat</p><br>
+                        <p>Total Amount</p>
+                    </div>
+                    <div class="col-lg-6" style="text-align:right">
+                        <p>$@Model.Aircraft.Price.ToString("N2")</p> <br>
+                        <p>$@Model.SeatingPrice.ToString("N2")</p> <br>
+                        <p>$@Model.InteriorPrice.ToString("N2")</p> <br>
+                        <p>$@Model.ConnectivityPrice.ToString("N2")</p> <br>
+                        <p>$@Model.EntertainmentPrice.ToString("N2")</p> <br>
+                        <p>$@Model.VAT.ToString("N2")</p> <br>
+                        <p>$@Model.FinalAmount.ToString("N2")</p> <br>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <br><br>
+                        <center>
+                            <form id="payment-form" action="/Payments/CreateSession" method="post">
+                            <a asp-action="ListView" asp-controller="Aircraft"
+                               style="font-size:12px;background-color: white;border:1px solid #1c2331;color:#1c2331;padding:10px;padding-left: 30px;padding-right: 30px;">Cancel</a>
+                            &nbsp;
+                            
+                                <input name="AircraftId" value="@Model.Aircraft.AircraftId" type="hidden" />
+                                <input name="OrderId" value="@Model.OrderId" type="hidden" />
+                                <input name="Amount" value="@Model.FinalAmount" type="hidden" />
+                            <input type="submit" style="font-size:12px;border:1px solid #1c2331;background-color:#1c2331; color:white;padding:10px;padding-left: 30px;padding-right: 30px;"
+                               value='Proceed' />
+                            </form>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        
+
+    </div>
+</section>
+<!-- ***** Fleet Ends ***** -->
+<script src="https://js.stripe.com/v3/"></script>

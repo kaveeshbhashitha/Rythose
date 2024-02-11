@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Aircraft Gallery";
+    Layout = "../Shared/web_layout.cshtml";
+}
+
+
+<script>
+    var myLinkElement = document.getElementById("myAccount");
+    myLinkElement.classList.toggle("active");
+</script>
+
+<!-- ***** Call to Action Start ***** -->
+<section class="section section-bg" id="call-to-action" style="background-image: url('/web/assets/images/back12.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2> <em>Order Tracking</em></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+<!-- ***** Fleet Starts ***** -->
+<br>
+<br>
+
+<section class="section" id="trainers">
+    <div class="container">
+        @foreach (var order in Model)
+                {
+        <br><br>
+        <div class="row">
+            <div class="col-lg-4">
+                    <img style="height: 180px; width:250px;object-fit: cover;margin-bottom:5px" src="~/uploads/@order.Aircraft.FrontImage1"
+                     alt="Second slide">
+            </div>
+            <div class="col-lg-6">
+                    <span style="font-size:20px;color:#0073e6">@order.Aircraft.ModelName </span><br>
+                    <span style="font-size:17px;color:#808080">$@order.Aircraft.Price.ToString("N2") </span>
+                <hr>
+                    <p><b>Seating -</b> @order.SeatingOption.SubCategoryName</p>
+                    <p><b>Interior -</b> @order.InteriorDesign.SubCategoryName</p>
+                    <p><b>Connectivity -</b> @order.ConnectivityOption.SubCategoryName</p>
+                    <p><b>Entertainment -</b> @order.EntertainmentOption.SubCategoryName</p>
+                <hr>
+                Order Tracking Details
+                    <p style="text-transform:capitalize">Status - @order.OrderStatus</p>
+                <p>
+                        @if (@order.OrderStatus == "Dispatched" || order.OrderStatus == "Departed" || order.OrderStatus == "Local")
+                        {
+                            <span>Order was Shipped On <b>@order.ShippedDate</b> and Expected Delivery Date is <b>@order.ExpectedDate</b></span>
+                            <br />
+                            if (order.OrderStatus == "Dispatched")
+                            {
+                                <span>The package is on its way, dispatched from the warehouse!</span>
+                            }
+                            else if (order.OrderStatus == "Departed")
+                            {
+                                <span>Your order has left the seller's country and is en route!</span>
+                            }
+                            else if (order.OrderStatus == "Local")
+                            {
+                                <span>The package has arrived in your country and is ready for delivery!</span>
+                            }
+
+
+                       }
+                    </p>
+            </div>
+        </div>
+        }
+
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- ***** Fleet Ends ***** -->

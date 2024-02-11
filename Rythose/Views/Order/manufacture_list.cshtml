@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Manufacture List";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#orderManagement").addClass("active");
+        $("#manufacture_list").addClass("active");
+        $("#orderManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Order List</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>Aircrafts Under Manufacture</p>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <p class="text-muted font-13 m-b-30">
+                                        List of Aircrafts that are being manufactured.
+                                    </p>
+                                    <table id="datatable" class="table table-striped" style="width:100%">
+                                        <thead style="background-color: #006666;color:white">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Aircraft</th>
+                                                <th>Customer</th>
+                                                <th>Date</th>
+                                                <th>Seating <br> Option</th>
+                                                <th>Interior <br> Design</th>
+                                                <th>Connectivity <br> Option</th>
+                                                <th>Entertaintment <br> Option</th>
+                                                <th>Process</th>
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            @if (Model != null && Model.Count > 0)
+                                            {
+                                                @foreach (var orderProcess in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@orderProcess.Manufacture.OrderId</td>
+                                                        <td>@orderProcess.Aircraft.ModelName</td>
+                                                        <td>@orderProcess.Customer.FullName</td>
+                                                        <td>@orderProcess.Manufacture.Date</td>
+                                                        <td>@orderProcess.Manufacture.Seating</td>
+                                                        <td>@orderProcess.Manufacture.Interior</td>
+                                                        <td>@orderProcess.Manufacture.Connectivity</td>
+                                                        <td>@orderProcess.Manufacture.Entertainment</td>
+                                                        <td>
+                                                            <a asp-controller="Order" asp-action="start_shipment" asp-route-id="@orderProcess.Manufacture.OrderId"
+                                                            class="btn btn-sm btn-warning"
+                                                            style="color:black">Complete</a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->

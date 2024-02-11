@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ld5c0gpAAAAAH56v3mZpyySwYNQpG9eTTE2bSOS"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Raythos Login | </title>
+
+    <!-- Bootstrap -->
+    <link href="~/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="~/admin/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="~/admin/build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    @{
+                        var error = Context.Session.GetString("Error");
+                    }
+                    @if (!string.IsNullOrEmpty(error))
+                    {
+                        <p style="color:red">@Context.Session.GetString("Error");</p>
+                        Context.Session.Remove("Error");
+                    }
+                    
+                    <form asp-action="Login_action" asp-controller="User" method="post">
+                        <h1>Login to Raythos</h1>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Username" name="Username" required="" />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" placeholder="Password" name="Password" required="" />
+                        </div>
+                        <div>
+                            <button class="btn btn-info submit" style="background-color:#0070e0" type="submit">Log in</button>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                Welcome to Raythose Aerospace System
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+<!-- Replace the variables below. -->
+<script>
+    function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+    }
+</script>

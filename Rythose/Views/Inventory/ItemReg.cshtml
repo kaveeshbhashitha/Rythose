@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "Order List";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#inventoryManagement").addClass("active");
+        $("#item_reg").addClass("active");
+        $("#ainventoryManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Inventory Register</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>New Inventory Items Registration</p>
+                    </div>
+
+                    <div class="x_content">
+                        <br />
+                        <form asp-action="Register_item" asp-controller="Inventory" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <label class="label-align" for="item-name">
+                                        Item Name <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <input type="text" id="item-name" name="ItemName" required="required" class="form-control">
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label class="label-align" for="item-date">
+                                        Date <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <input type="date" id="item-date" name="Date" required="required" class="form-control">
+                                </div>
+
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3">
+                                    <br><br>
+                                    <label class="label-align" for="main-category">
+                                        Main Category <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <select id="main-category" name="MainId" class="form-control" required>
+                                        <option value=""> -Select- </option>
+                                        @foreach (var mainCategory in ViewBag.MainCategories)
+                                        {
+                                            <option value="@mainCategory.MainId">@mainCategory.MainCategoryName</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <br><br>
+                                    <label class="label-align" for="sub-category">
+                                        Sub Category <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <select id="sub-category" name="SubId" class="form-control" required>
+                                        <option value=""> -Select- </option>
+                                        <!-- Initially, load all sub-categories -->
+                                        @foreach (var subCategory in ViewBag.SubCategories)
+                                        {
+                                            <option value="@subCategory.SubId" data-mainid="@subCategory.MainId">@subCategory.SubCategoryName</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                                <script>
+                                    $(document).ready(function () {
+                                        var allSubCategories = $('#sub-category option').clone();
+
+                                        $('#main-category').change(function () {
+                                            var selectedMainId = $(this).val();
+
+                                            $('#sub-category').empty();
+
+                                            // Add the default "Select" option
+                                            $('#sub-category').append('<option value=""> -Select- </option>');
+
+                                            // Filter and append only sub-categories associated with the selected main-category
+                                            var filteredSubCategories = allSubCategories.filter('[data-mainid="' + selectedMainId + '"]');
+                                            $('#sub-category').append(filteredSubCategories);
+                                        });
+                                    });
+                                </script>
+
+
+                                <div class="col-lg-2">
+                                    <br><br>
+                                    <label class="label-align" for="quantity">
+                                        Qty <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <input type="number" id="quantity" name="Quantity" required="required" class="form-control" oninput="updateStock()">
+                                    <input type="hidden" id="stock" name="Stock" required="required" class="form-control">
+
+                                    <script>
+                                        function updateStock() {
+                                            var quantityValue = document.getElementById('quantity').value;
+                                            document.getElementById('stock').value = quantityValue;
+                                        }
+                                    </script>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <br><br>
+                                    <label class="label-align" for="price">
+                                        Price ($) <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <input type="number" id="price" name="Price" required="required" class="form-control">
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <br><br>
+                                    <label class="label-align" for="vendor">
+                                        Vendor <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <input type="text" id="vendor" name="Vendor" required="required" class="form-control">
+                                </div>
+
+
+                                <div class="col-md-12 col-sm-12 offset-md-12" style="text-align:right">
+                                    <br><br>
+                                    <button class="btn btn-primary" type="reset">Reset</button>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <br><br>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+<br>
+<br>
+<br>
+    </div>
+<!-- /page content -->

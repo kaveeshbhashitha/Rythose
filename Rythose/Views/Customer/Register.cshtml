@@ -1,0 +1,343 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link rel="stylesheet" href="~/Login/fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="~/Login/css/owl.carousel.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="~/Login/css/bootstrap.min.css">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="~/Login/css/style.css">
+
+  <title>Customer Register</title>
+</head>
+
+<body style="background-color: #FFFFFF;">
+
+
+
+  <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 order-md-2">
+                    <img src="~/Login/images/reg.jpg" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-7 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3>Create an Account at <strong style="color:#0073E6">Raythos Aerospace</strong></h3>
+                                <p class="mb-4">Join us and explore the world of aviation!
+                                @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                                {
+                                    <br><span style="color:red">The data you've entered is already registered..!!</span>
+                                }
+                                </p>
+                            </div>
+                            <form asp-action="Register" asp-controller="Customer" method="post">
+                                <div class="form-group first">
+                                    <label for="idNumber">ID Number</label>
+                                    <input type="text" title="Please Enter a Valid Social Number"  class="form-control" id="idNumber" name="idNumber" required>
+                                <div id="duplicateMessage" style="color: red;"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" class="form-control"  id="fullName" name="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact">Contact</label>
+                                    <input type="text" pattern="\d{11}" title="Please Enter a Valid Contact Number" class="form-control" id="contact" name="contact" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required oninput="updateUsername()">
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" id="address" name="address" required>
+                                </div>
+                                <div class="form-group"> <br>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="country">Country</label>
+                                                <select id="country" class="form-control" required name="country">
+                                                    <option value=""></option>
+                                                    <option value="usa">United States</option>
+                                                    <option value="canada">Canada</option>
+                                                    <option value="uk">United Kingdom</option>
+                                                    <option value="germany">Germany</option>
+                                                    <option value="france">France</option>
+                                                    <option value="australia">Australia</option>
+                                                    <option value="japan">Japan</option>
+                                                    <option value="india">India</option>
+                                                    <option value="china">China</option>
+                                                    <option value="brazil">Brazil</option>
+                                                    <option value="russia">Russia</option>
+                                                    <option value="southafrica">South Africa</option>
+                                                    <option value="southkorea">South Korea</option>
+                                                    <option value="mexico">Mexico</option>
+                                                    <option value="italy">Italy</option>
+                                                    <option value="spain">Spain</option>
+                                                    <option value="argentina">Argentina</option>
+                                                    <option value="turkey">Turkey</option>
+                                                    <option value="netherlands">Netherlands</option>
+                                                    <option value="switzerland">Switzerland</option>
+                                                    <option value="srilanka">Sri Lanka</option>
+                                                </select>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="city">City</label>
+                                            <select id="city" class="form-control" required name="city">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="zipCode">Zip Code</label>
+                                            <input type="text" pattern="\d{5}" title="Please Enter a Valid Zip Code Number" class="form-control" id="zipCode" name="zipCode"
+                                                required>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="licenseCard">License Card</label>
+                                            <input type="text" class="form-control" title="Please Enter a Valid Pilot License Number" pattern="[A-Za-z0-9]{8}" id="licenseCard" name="licenseCard"
+                                                required>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" readonly style='color:gray !important' class="form-control" id="username" name="username" required>
+                                </div>
+                                <div class="form-group last mb-4">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+
+                                <input type="submit" value="Register" style="background-color:#0073E6"
+                                    class="btn text-white btn-block btn-primary">
+
+                                <span class="d-block text-left my-4 text-muted"> Already have an account? 
+                                    <a asp-action="Login" asp-controller="Customer">Log In</a>
+
+                                </span>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+    // Country change event to populate cities
+    document.getElementById("country").addEventListener("change", function () {
+        var country = this.value;
+        var cityDropdown = document.getElementById("city");
+
+        // Clear existing options
+        cityDropdown.innerHTML = '<option value="">Select City</option>';
+
+        // Fetch cities based on the selected country
+        switch (country) {
+            case "usa":
+                addCityOption(cityDropdown, "newyork", "New York");
+                addCityOption(cityDropdown, "losangeles", "Los Angeles");
+                addCityOption(cityDropdown, "chicago", "Chicago");
+                addCityOption(cityDropdown, "houston", "Houston");
+                addCityOption(cityDropdown, "miami", "Miami");
+                break;
+            case "canada":
+                addCityOption(cityDropdown, "toronto", "Toronto");
+                addCityOption(cityDropdown, "vancouver", "Vancouver");
+                addCityOption(cityDropdown, "montreal", "Montreal");
+                addCityOption(cityDropdown, "calgary", "Calgary");
+                addCityOption(cityDropdown, "ottawa", "Ottawa");
+                break;
+            case "uk":
+                addCityOption(cityDropdown, "london", "London");
+                addCityOption(cityDropdown, "manchester", "Manchester");
+                addCityOption(cityDropdown, "birmingham", "Birmingham");
+                addCityOption(cityDropdown, "glasgow", "Glasgow");
+                addCityOption(cityDropdown, "liverpool", "Liverpool");
+                break;
+            case "germany":
+                addCityOption(cityDropdown, "berlin", "Berlin");
+                addCityOption(cityDropdown, "munich", "Munich");
+                addCityOption(cityDropdown, "hamburg", "Hamburg");
+                addCityOption(cityDropdown, "frankfurt", "Frankfurt");
+                addCityOption(cityDropdown, "cologne", "Cologne");
+                break;
+            case "france":
+                addCityOption(cityDropdown, "paris", "Paris");
+                addCityOption(cityDropdown, "marseille", "Marseille");
+                addCityOption(cityDropdown, "lyon", "Lyon");
+                addCityOption(cityDropdown, "toulouse", "Toulouse");
+                addCityOption(cityDropdown, "nice", "Nice");
+                break;
+            case "australia":
+                addCityOption(cityDropdown, "sydney", "Sydney");
+                addCityOption(cityDropdown, "melbourne", "Melbourne");
+                addCityOption(cityDropdown, "brisbane", "Brisbane");
+                addCityOption(cityDropdown, "perth", "Perth");
+                addCityOption(cityDropdown, "adelaide", "Adelaide");
+                break;
+            case "japan":
+                addCityOption(cityDropdown, "tokyo", "Tokyo");
+                addCityOption(cityDropdown, "osaka", "Osaka");
+                addCityOption(cityDropdown, "kyoto", "Kyoto");
+                addCityOption(cityDropdown, "yokohama", "Yokohama");
+                addCityOption(cityDropdown, "sapporo", "Sapporo");
+                break;
+            case "india":
+                addCityOption(cityDropdown, "delhi", "Delhi");
+                addCityOption(cityDropdown, "mumbai", "Mumbai");
+                addCityOption(cityDropdown, "bangalore", "Bangalore");
+                addCityOption(cityDropdown, "chennai", "Chennai");
+                addCityOption(cityDropdown, "kolkata", "Kolkata");
+                break;
+            case "china":
+                addCityOption(cityDropdown, "beijing", "Beijing");
+                addCityOption(cityDropdown, "shanghai", "Shanghai");
+                addCityOption(cityDropdown, "guangzhou", "Guangzhou");
+                addCityOption(cityDropdown, "shenzhen", "Shenzhen");
+                addCityOption(cityDropdown, "chengdu", "Chengdu");
+                break;
+            case "brazil":
+                addCityOption(cityDropdown, "riodejaneiro", "Rio de Janeiro");
+                addCityOption(cityDropdown, "saopaulo", "Sao Paulo");
+                addCityOption(cityDropdown, "brasilia", "Brasilia");
+                addCityOption(cityDropdown, "salvador", "Salvador");
+                addCityOption(cityDropdown, "fortaleza", "Fortaleza");
+                break;
+            case "russia":
+                addCityOption(cityDropdown, "moscow", "Moscow");
+                addCityOption(cityDropdown, "stpetersburg", "St. Petersburg");
+                addCityOption(cityDropdown, "novosibirsk", "Novosibirsk");
+                addCityOption(cityDropdown, "ekaterinburg", "Ekaterinburg");
+                addCityOption(cityDropdown, "nizhnynovgorod", "Nizhny Novgorod");
+                break;
+            case "southafrica":
+                addCityOption(cityDropdown, "capetown", "Cape Town");
+                addCityOption(cityDropdown, "johannesburg", "Johannesburg");
+                addCityOption(cityDropdown, "pretoria", "Pretoria");
+                addCityOption(cityDropdown, "durban", "Durban");
+                addCityOption(cityDropdown, "portelizabeth", "Port Elizabeth");
+                break;
+            case "southkorea":
+                addCityOption(cityDropdown, "seoul", "Seoul");
+                addCityOption(cityDropdown, "busan", "Busan");
+                addCityOption(cityDropdown, "incheon", "Incheon");
+                addCityOption(cityDropdown, "daegu", "Daegu");
+                addCityOption(cityDropdown, "gwangju", "Gwangju");
+                break;
+            case "mexico":
+                addCityOption(cityDropdown, "mexicocity", "Mexico City");
+                addCityOption(cityDropdown, "guadalajara", "Guadalajara");
+                addCityOption(cityDropdown, "monterrey", "Monterrey");
+                addCityOption(cityDropdown, "puebla", "Puebla");
+                addCityOption(cityDropdown, "tijuana", "Tijuana");
+                break;
+            case "italy":
+                addCityOption(cityDropdown, "rome", "Rome");
+                addCityOption(cityDropdown, "milan", "Milan");
+                addCityOption(cityDropdown, "naples", "Naples");
+                addCityOption(cityDropdown, "turin", "Turin");
+                addCityOption(cityDropdown, "florence", "Florence");
+                break;
+            case "spain":
+                addCityOption(cityDropdown, "madrid", "Madrid");
+                addCityOption(cityDropdown, "barcelona", "Barcelona");
+                addCityOption(cityDropdown, "valencia", "Valencia");
+                addCityOption(cityDropdown, "seville", "Seville");
+                addCityOption(cityDropdown, "zaragoza", "Zaragoza");
+                break;
+            case "argentina":
+                addCityOption(cityDropdown, "buenosaires", "Buenos Aires");
+                addCityOption(cityDropdown, "cordoba", "Cordoba");
+                addCityOption(cityDropdown, "rosario", "Rosario");
+                addCityOption(cityDropdown, "mendoza", "Mendoza");
+                addCityOption(cityDropdown, "sanjuan", "San Juan");
+                break;
+            case "turkey":
+                addCityOption(cityDropdown, "istanbul", "Istanbul");
+                addCityOption(cityDropdown, "ankara", "Ankara");
+                addCityOption(cityDropdown, "izmir", "Izmir");
+                addCityOption(cityDropdown, "antalya", "Antalya");
+                addCityOption(cityDropdown, "bursa", "Bursa");
+                break;
+            case "netherlands":
+                addCityOption(cityDropdown, "amsterdam", "Amsterdam");
+                addCityOption(cityDropdown, "rotterdam", "Rotterdam");
+                addCityOption(cityDropdown, "thehague", "The Hague");
+                addCityOption(cityDropdown, "utrecht", "Utrecht");
+                addCityOption(cityDropdown, "eindhoven", "Eindhoven");
+                break;
+            case "switzerland":
+                addCityOption(cityDropdown, "zurich", "Zurich");
+                addCityOption(cityDropdown, "geneva", "Geneva");
+                addCityOption(cityDropdown, "basel", "Basel");
+                addCityOption(cityDropdown, "berne", "Berne");
+                addCityOption(cityDropdown, "lausanne", "Lausanne");
+                break;
+            case "srilanka":
+                addCityOption(cityDropdown, "colombo", "Colombo");
+                addCityOption(cityDropdown, "kandy", "Kandy");
+                addCityOption(cityDropdown, "galle", "Galle");
+                addCityOption(cityDropdown, "jaffna", "Jaffna");
+                addCityOption(cityDropdown, "nuwaraeliya", "Nuwara Eliya");
+                break;
+        }
+    });
+
+    // Function to add a city option to the dropdown
+    function addCityOption(dropdown, value, text) {
+        var option = document.createElement("option");
+        option.value = value;
+        option.text = text;
+        dropdown.add(option);
+    }
+</script>
+
+<script>
+        function updateUsername() {
+            // Get the email input value
+            var emailInput = document.getElementById('email');
+            var emailValue = emailInput.value;
+
+            // Populate the username field
+            var usernameInput = document.getElementById('username');
+            usernameInput.value = emailValue;
+        }
+    </script>
+
+
+    
+
+  <script src="~/Login/js/jquery-3.3.1.min.js"></script>
+  <script src="~/Login/js/popper.min.js"></script>
+  <script src="~/Login/js/bootstrap.min.js"></script>
+  <script src="~/Login/js/main.js"></script>
+</body>
+
+</html>

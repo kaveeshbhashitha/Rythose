@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Aircraft List";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+		$("#aircraftManagement").addClass("active");
+        $("#aircraft_list").addClass("active");
+		$("#aircraftManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Aircraft List</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>Raythose Aircraft List</p>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <p class="text-muted font-13 m-b-30">
+                                        List of Registered Aircrafts for sale in Raythose System.
+                                    </p>
+                                    <table id="datatable" class="table table-striped" style="width:100%">
+                                        <thead style="background-color: #006666;color:white">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th style="width:10%">Images</th>
+                                                <th>Aircraft</th>
+                                                <th>Type</th>
+                                                <th>Passangers</th>
+                                                <th>Range</th>
+                                                <th>Speed</th>
+                                                <th>Feul<br>Burn</th>
+                                                <th>Selling <br>Price</th>
+                                                <th>Qty</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                            <tr>
+                                                <td>@item.AircraftId</td>
+                                                <td>
+                                                    <a target='_blank' href="~/uploads/@item.FrontImage1"><i class="fa fa-file-image-o"></i></a> &nbsp;
+                                                    <a target='_blank' href="~/uploads/@item.FrontImage2"><i class="fa fa-file-image-o"></i></a> &nbsp;
+                                                    <a target='_blank' href="~/uploads/@item.FrontImage3"><i class="fa fa-file-image-o"></i></a> &nbsp;
+                                                    <a target='_blank' href="~/uploads/@item.InnerImage1"><i class="fa fa-file-image-o"></i></a> &nbsp;
+                                                    <a target='_blank' href="~/uploads/@item.InnerImage2"><i class="fa fa-file-image-o"></i></a> &nbsp;
+                                                    <a target='_blank' href="~/uploads/@item.InnerImage3"><i class="fa fa-file-image-o"></i></a> &nbsp;
+                                                    <a target='_blank' href="~/uploads/@item.SeatingImage"><i class="fa fa-file-image-o"></i></a> &nbsp;
+                                                 </td>
+                                                <td>@item.ModelName</td>
+                                                <td>@item.AircraftType</td>
+                                                <td>@item.Passengers max<br /> (@item.Baggage cu. ft)</td>
+                                                <td>@item.Range hrs</td>
+                                                <td>@item.Speed knots</td>
+                                                 <td>@item.Fuel gph</td>
+                                                 <td><b>$@item.Price.ToString("N2") - $@item.MaxPrice.ToString("N2")</b></td>
+                                                <td>@item.Quantity</td>
+                                                <td>
+                                                    <a asp-controller="Aircraft" asp-action="EditAircraft" asp-route-id="@item.AircraftId"><i class="fa fa-pencil"></i></a> &nbsp;
+                                                    <button class="btn btn-link" style="padding:0px;color:gray" onclick="confirmRemove('@Url.Action("RemoveAircraft", new { id = item.AircraftId })')">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                </td
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->

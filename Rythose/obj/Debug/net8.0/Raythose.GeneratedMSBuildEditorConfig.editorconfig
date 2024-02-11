@@ -1,0 +1,199 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Raythose
+build_property.RootNamespace = Raythose
+build_property.ProjectDir = E:\Top Up SE\Application Development\Coursework 02\Proj\Rythose\Rythose\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\Top Up SE\Application Development\Coursework 02\Proj\Rythose\Rythose
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/AdminHome/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Ib21lXGluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/AdminHome/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Ib21lXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Aircraft/AddAircraft.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlyY3JhZnRcQWRkQWlyY3JhZnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Aircraft/AircraftList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlyY3JhZnRcQWlyY3JhZnRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Aircraft/CheckBuy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlyY3JhZnRcQ2hlY2tCdXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Aircraft/CustomerPreference.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlyY3JhZnRcQ3VzdG9tZXJQcmVmZXJlbmNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Aircraft/EditAircraft.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlyY3JhZnRcRWRpdEFpcmNyYWZ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Aircraft/ListView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlyY3JhZnRcTGlzdFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Aircraft/SingleDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWlyY3JhZnRcU2luZ2xlRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Customer/CusList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Customer/CustomerProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Customer/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Customer/OrderHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcT3JkZXJIaXN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Customer/OwnAircrafts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcT3duQWlyY3JhZnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Customer/OwnedSingle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcT3duZWRTaW5nbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Customer/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Home/about.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxhYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Inventory/CatList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENhdExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Inventory/CatReg.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENhdFJlZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Inventory/CoreItemList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENvcmVJdGVtTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Inventory/CoreItemReg.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENvcmVJdGVtUmVnLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Inventory/ItemList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEl0ZW1MaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Inventory/ItemReg.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEl0ZW1SZWcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Inventory/StockItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFN0b2NrSXRlbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Order/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ2hlY2tvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Order/completed_list.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcY29tcGxldGVkX2xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Order/Invoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW52b2ljZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Order/manufacture_list.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcbWFudWZhY3R1cmVfbGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Order/order_list.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcb3JkZXJfbGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Order/shipping_list.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcc2hpcHBpbmdfbGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Order/start_manufacture.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcc3RhcnRfbWFudWZhY3R1cmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Order/start_shipment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcc3RhcnRfc2hpcG1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Report/Income.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XEluY29tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Report/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XE9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Shared/admin_layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXGFkbWluX2xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Shared/web_layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHdlYl9sYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/User/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Top Up SE/Application Development/Coursework 02/Proj/Rythose/Rythose/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-diad0k3qn1

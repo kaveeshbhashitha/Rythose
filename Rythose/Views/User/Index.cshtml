@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "User List";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-d3I2RTOmVbKA9taV4ZabVYqq7Hg9yQr8ZfNlSlaKt/aPP6rDQa4fP+JFMEbfH1A" crossorigin="anonymous">
+
+<script>
+    $(document).ready(function () {
+        $("#userManagement").addClass("active");
+        $("#add_user").addClass("active");
+        $("#userManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>User List</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>Staff Users List</p>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <p class="text-muted font-13 m-b-30">
+                                        List of Staff Users who uses the system.
+                                    </p>
+                                    <table id="datatable" class="table table-striped" style="width:100%">
+                                        <thead style="background-color: #006666;color:white">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Staff Name</th>
+                                                <th>Username</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            @{
+                                                int no = 1;
+                                            }
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@no</td>
+                                                    <td>@item.StaffName</td>
+                                                    <td>@item.Username</td>
+                                                    <td style="text-align:center">
+                                                        <a href="#" data-toggle="modal" data-target="#editModal" data-id="@item.UserId" data-name="@item.Username" data-pwd="@item.Password">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </a>
+                                                        <button class="btn btn-link" style="padding:0px;color:gray" onclick="confirmRemove('@Url.Action("Remove", new { id = item.UserId })')">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                no++;
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->
+
+<!-- update Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="mainCategoryName">Userame:</label>
+                        <input type="text" class="form-control" id="Username" required name="Username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Password:</label>
+                        <input type="text" class="form-control" id="Password" required name="Password" />
+                    </div>
+                    <input type="hidden" id="UserId" name="UserId" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="updateUser()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    function openEditModal(id, username) {
+        $('#UserId').val(id);
+        $('#Username').val(username);
+        $('#editModal').modal('show');
+    }
+
+    function updateUser() {
+        var formData = $('#editForm').serialize();
+        $.post('/User/Update', formData, function (data) {
+            $('#editModal').modal('hide');
+            location.reload();
+        });
+    }
+
+
+    $(document).ready(function () {
+        $('[data-toggle="modal"][data-target="#editModal"]').click(function () {
+            var id = $(this).data('id');
+            var username = $(this).data('name');
+            openEditModal(id, username);
+        });
+    });
+</script>

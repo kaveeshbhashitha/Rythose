@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "User Details";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-d3I2RTOmVbKA9taV4ZabVYqq7Hg9yQr8ZfNlSlaKt/aPP6rDQa4fP+JFMEbfH1A" crossorigin="anonymous">
+
+<script>
+    $(document).ready(function () {
+        $("#userManagement").addClass("active");
+        $("#add_user").addClass("active");
+        $("#userManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>User Register</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>New User Registration</p>
+                    </div>
+
+                    <div class="x_content">
+                        <br />
+                        <form asp-action="Add_action" asp-controller="User" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="label-align" for="staff-name">
+                                        Staff Name <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <input type="text" id="staff-name" name="StaffName" required="required" class="form-control">
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label class="label-align" for="username">
+                                        Username <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <input type="text" id="username" name="Username" required="required" class="form-control">
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label class="label-align" for="password">
+                                        Password <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <input type="text" id="password" name="Password" required="required" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-8"> </div>
+                                <div class="col-lg-4">
+                                    <label class="label-align" for="admin-password">
+                                        Admin Password <span class="required" style="color: red;">*</span>
+                                    </label>
+                                    <input type="text" id="admin-password" name="adminPassword" required="required" class="form-control">
+                                    <br>
+
+                                    <div class="item form-group">
+                                        <br>
+                                        <div class="col-md-12 col-sm-12 offset-md-12" style="text-align:right">
+                                            <button class="btn btn-primary" type="reset">Reset</button>
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+<br>
+<br>
+<br>
+    </div>
+<!-- /page content -->

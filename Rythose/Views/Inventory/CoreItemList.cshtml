@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Item List";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#inventoryManagement").addClass("active");
+        $("#core_item_reg").addClass("active");
+        $("#ainventoryManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Core Item List</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>Inventory Core Item List</p>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <p class="text-muted font-13 m-b-30">
+                                        List of Core Manufacture Items on the Raythose Inventory.
+                                    </p>
+                                    <table id="datatable" class="table table-striped" style="width:100%">
+                                        <thead style="background-color: #006666;color:white">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Item Type</th>
+                                                <th>Item Name</th>
+                                                <th>Qty</th>
+                                                <th>Purchased Date</th>
+                                                <th>Stock</th>
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                
+
+                                                <tr>
+                                                    <td>@item.EssentialId</td>
+                                                    <td>@item.EssentialType</td>
+                                                    <td>@item.EssentialName</td>
+                                                    <td>@item.EssentialQuantity</td>
+                                                    <td style="text-align:center">@item.EssentialDate</td>
+                                                    <td style="text-align:right">
+                                                        @if (Convert.ToInt32(item.EssentialStock) == Convert.ToInt32(item.EssentialQuantity))
+                                                        {
+                                                            <span class="badge bg-primary"
+                                                                  style="color:white">&nbsp; @item.EssentialStock &nbsp;</span>
+                                                        }
+                                                        else if (Convert.ToInt32(item.EssentialStock) == 0)
+                                                        {
+                                                            <span class="badge bg-danger"
+                                                                  style="color:white">&nbsp; @item.EssentialStock &nbsp;</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="badge bg-warning"
+                                                                  style="color:white">&nbsp; @item.EssentialStock &nbsp;</span>
+                                                        }
+                                                        
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->

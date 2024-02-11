@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Shipment Start";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#orderManagement").addClass("active");
+        $("#shipping_list").addClass("active");
+        $("#orderManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Order Shipment</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>
+                            Aircraft Shipment Details
+                        </p>
+                    </div>
+
+                    <div class="x_content">
+                        @using (Html.BeginForm("submit_shipping", "Order", FormMethod.Post))
+                        {
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <img src="~/uploads/@Model.Aircraft.FrontImage1" alt="" style="width:80%">
+                                    <p style="font-size:24px;color:#006699;margin-top:10px">
+                                        @Model.Aircraft.ModelName
+                                    </p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="col-form-label " style="font-size: 18px;">
+                                        Customer Details
+                                    </label>
+                                    <p style="line-height: 25px;">
+                                        <b>Customer Name -</b> @Model.Customer.FullName<br>
+                                        <b>Address -</b> @Model.Customer.Address<br>
+                                        <b>Country -</b> @Model.Customer.City, @Model.Customer.Country<br>
+                                        <b>Zip Code -</b> @Model.Customer.ZipCode<br>
+                                        <b>Contact -</b> @Model.Customer.Contact
+                                    </p>
+                                    <br>
+                                    <label class="col-form-label " style="font-size: 18px;">
+                                        Shipment Details
+                                    </label>
+                                    <p style="line-height: 25px;text-transform:capitalize">
+                                        <b>Order ID -</b> @GetFormattedOrderId(Model.OrderId)<br>
+                                            <b>Shipping Address -</b> @Model.Customer.ShippingAddres<br>
+                                        <b>Aircraft Price -</b> $@Model.Aircraft.Price.ToString("N2")<br>
+                                        <b>Total Amount -</b> $@Model.FinalAmount.ToString("N2")<br>
+                                        <b>Payment Status -</b> @Model.PaymentStatus
+                                    </p>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label class="col-form-label ">
+                                        Shipped Date <span class="required">*</span>
+                                    </label>
+                                        <input class="date-picker form-control" name="ShippedDate" required style="width:80%"
+                                           placeholder="dd-mm-yyyy" type="date">
+                                    <br>
+                                    <label class="col-form-label ">
+                                        Expected Delivery Date <span class="required">*</span>
+                                    </label>
+                                        <input class="date-picker form-control" name="ExpectedDate" required style="width:80%"
+                                           placeholder="dd-mm-yyyy" type="date">
+                                    <br>
+
+                                        <input type="hidden" name="OrderId" value="@Model.OrderId" />
+                                    <input type="submit" class="btn btn-small btn-success"
+                                           style="position:absolute;bottom:0%;right:0%"
+                                           value="Ship Aircraft">
+                                </div>
+
+                            </div>
+                        </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->
+@functions {
+    // Helper function to format the OrderId as "RAA0001", "RAA0002", etc.
+    public string GetFormattedOrderId(int orderId)
+    {
+        return $"RAA{orderId:D4}";
+    }
+}

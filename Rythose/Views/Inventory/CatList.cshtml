@@ -1,0 +1,232 @@
+﻿@{
+    ViewData["Title"] = "Category List";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+@using Raythose.Models
+
+<script>
+    $(document).ready(function () {
+        $("#inventoryManagement").addClass("active");
+        $("#cat_list").addClass("active");
+        $("#ainventoryManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Category List</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>Category List</p>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <p class="text-muted font-13 m-b-30">
+                                        List of Main Categories for Raythos Inventory Management.
+                                    </p>
+
+                                    <table id="" class="table table-striped" style="width:100%;">
+                                        <!-- ... Main Category table header ... -->
+                                        <thead style="background-color: #006666;color:white">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Main Category Name</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var cat in ViewBag.MainCategories)
+                                            {
+                                                <tr>
+                                                    <td>@cat.MainId</td>
+                                                    <td>@cat.MainCategoryName</td>
+                                                    <td>
+                                                        <a href="#" data-toggle="modal" data-target="#editMainModal" data-id="@cat.MainId" data-name="@cat.MainCategoryName">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </a> &nbsp;
+                                                        <button class="btn btn-link" style="padding:0px;color:gray" onclick="confirmRemove('@Url.Action("RemoveMainCategory", new { id = cat.MainId })')">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                    <!-- Main Category Modal -->
+                                    <div class="modal fade" id="editMainModal" tabindex="-1" role="dialog" aria-labelledby="editMainModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editModalLabel">Edit Main Category</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="editForm">
+                                                        <div class="form-group">
+                                                            <label for="mainCategoryName">Main Category Name:</label>
+                                                            <input type="text" class="form-control" id="mainCategoryName" name="mainCategoryName" />
+                                                        </div>
+                                                        <input type="hidden" id="mainCategoryId" required name="mainCategoryId" />
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary" onclick="updateMainCategory()">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr />
+                                    <br /><br />
+
+                                    <p class="text-muted font-13 m-b-30">
+                                        List of Sub Categories for Raythos Inventory Management.
+                                    </p>
+                                    <table id="datatable" class="table table-striped" style="width:100%;">
+                                        <!-- ... Sub Category table header ... -->
+                                        <thead style="background-color: #006666;color:white">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Main Category</th>
+                                                <th>Sub Category Name</th>
+                                                <th>Price</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="border-bottom:1px solid #f2f2f2">
+                                            @foreach (var cat in ViewBag.SubCategories)
+                                            {
+                                                var mainCategory = ((IEnumerable<MainCategory>)ViewBag.MainCategories)
+                                                .FirstOrDefault(mc => mc.MainId == cat.MainId);
+
+                                                <tr>
+                                                    <td>@cat.SubId</td>
+                                                    <td>@mainCategory?.MainCategoryName</td>
+                                                    <td>@cat.SubCategoryName</td>
+                                                    <td>$@cat.Price.ToString("N2")</td>
+                                                    <td>
+                                                        <a href="#" data-toggle="modal" data-target="#editSubModal" data-id="@cat.SubId" data-name="@cat.SubCategoryName" data-price="@cat.Price">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </a> &nbsp;
+                                                        <button class="btn btn-link" style="padding:0px;color:gray" onclick="confirmRemove('@Url.Action("RemoveSubCategory", new { id = cat.SubId })')">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                    <!-- Sub Category Modal -->
+                                    <div class="modal fade" id="editSubModal" tabindex="-1" role="dialog" aria-labelledby="editSubModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editModalLabel">Edit Sub Category</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="editSubForm">
+                                                        <div class="form-group">
+                                                            <label for="mainCategoryName">Sub Category Name:</label>
+                                                            <input type="text" class="form-control" id="subCategoryName" required name="subCategoryName" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="mainCategoryName">Price:</label>
+                                                            <input type="text" class="form-control" id="price" required name="price" />
+                                                        </div>
+                                                        <input type="hidden" id="subCategoryId" name="subCategoryId" />
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary" onclick="updateSubCategory()">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    // Function to populate Main Category modal with data
+    function openEditMainModal(id, name) {
+        $('#mainCategoryId').val(id);
+        $('#mainCategoryName').val(name);
+        $('#editMainModal').modal('show');
+    }
+
+    function updateMainCategory() {
+        var formData = $('#editForm').serialize();
+        $.post('/Inventory/UpdateMainCategory', formData, function (data) {
+            $('#editMainModal').modal('hide');
+            location.reload();
+        });
+    }
+
+    function openEditSubModal(id, name, price) {
+        $('#subCategoryId').val(id);
+        $('#subCategoryName').val(name);
+        $('#price').val(price);
+        $('#editSubModal').modal('show');
+    }
+
+    function updateSubCategory() {
+        var formData = $('#editSubForm').serialize();
+        $.post('/Inventory/UpdateSubCategory', formData, function (data) {
+            $('#editSubModal').modal('hide');
+            location.reload();
+        });
+    }
+
+
+    $(document).ready(function () {
+        // Main Category Modal
+        $('[data-toggle="modal"][data-target="#editMainModal"]').click(function () {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            openEditMainModal(id, name);
+        });
+
+        // Sub Category Modal
+        $('[data-toggle="modal"][data-target="#editSubModal"]').click(function () {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            var price = $(this).data('price');
+            openEditSubModal(id, name, price);
+        });
+    });
+</script>
+

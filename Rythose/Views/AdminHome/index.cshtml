@@ -1,0 +1,152 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+<style>
+    .order-card {
+        color: #fff;
+    }
+
+    .bg-c-blue {
+        background: linear-gradient(45deg, #4099ff, #73b4ff);
+    }
+
+    .bg-c-green {
+        background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+    }
+
+    .bg-c-yellow {
+        background: linear-gradient(45deg, #FFB64D, #ffcb80);
+    }
+
+    .bg-c-pink {
+        background: linear-gradient(45deg, #FF5370, #ff869a);
+    }
+
+
+    .card {
+        border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+        box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+        border: none;
+        margin-bottom: 30px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .card .card-block {
+            padding: 25px;
+        }
+
+    .order-card i {
+        font-size: 26px;
+    }
+
+    .f-left {
+        float: left;
+    }
+
+    .f-right {
+        float: right;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $("#dashboard").addClass("active");
+    });
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+          rel="stylesheet">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xl-3">
+                <br />
+                <div class="card bg-c-blue order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Total Orders</h6>
+                        <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>@ViewData["TotalOrders"]</span></h2>
+                        <p class="m-b-0">Raythos Online Orders</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+                <br />
+                <div class="card bg-c-green order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Total Income</h6>
+                        <h2 class="text-right"><i class="fa fa-money f-left"></i><span>$ @(((float)ViewData["TotalIncome"]).ToString("N"))</span></h2>
+                        <p class="m-b-0">Online Sales</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+                <br />
+                <div class="card bg-c-yellow order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Total Aircrafts</h6>
+                        <h2 class="text-right"><i class="fa fa-plane f-left"></i><span>@ViewData["TotalAircrafts"]</span></h2>
+                        <p class="m-b-0">In Stock Aircrafts</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+                <br />
+                <div class="card bg-c-pink order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Total Resources</h6>
+                        <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>$ @(((int)ViewData["TotalResources"]).ToString("N2"))</span></h2>
+                        <p class="m-b-0">Net worth of Inventory Items</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-xl-12">
+                <canvas id="bar-chart" width="800" height="250"></canvas>
+
+                <script>
+                    var labels = @Html.Raw(ViewData["ChartLabels"]);
+                    var data = @Html.Raw(ViewData["ChartData"]);
+
+                    new Chart(document.getElementById("bar-chart"), {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: "Orders",
+                                    backgroundColor: ["#28728F", "#0B626B", "#103464", "#5F7E8C", "#28728F", "#0B626B", "#103464", "#5F7E8C", "#28728F", "#0B626B", "#103464", "#5F7E8C"],
+                                    data: data
+                                }
+                            ]
+                        },
+                        options: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: 'Monthly Orders Raythose Completed'
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+
+
+        <br /><br /><br />
+    </div>
+</div>
+
+    
+<!-- /page content -->

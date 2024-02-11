@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "../Shared/web_layout.cshtml";
+}
+
+
+<script>
+    var myLinkElement = document.getElementById("homeTab");
+    myLinkElement.classList.toggle("active");
+</script>
+
+<!-- ***** Main Banner Area Start ***** -->
+<div class="main-banner" id="top">
+    <img autoplay muted loop id="bg-video" src="~/web/assets/images/back4.jpg">
+    </img>
+
+    <div class="video-overlay header-text">
+        <div class="caption">
+            <h6>Reach New Horizons</h6>
+            <h2>Best <em>Aircraft </em>dealers!</h2>
+            <div class="main-button">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->
+<!-- ***** Cars Starts ***** -->
+<section class="section" id="trainers">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Featured <em>Aircrafts</em></h2> <br>
+                    <p>
+                        Dive into Excellence: Unveiling Our Handpicked Selection of Featured Aircrafts Where Every
+                        Journey is a Masterpiece in
+                        the Sky
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                int num = 0;
+            }
+
+            @foreach (var item in Model)
+            {
+                if (item.Quantity > 0)
+                {
+                if (num < 3 && item.Quantity > 0)
+                {
+                    <div class="col-lg-4">
+                        <div class="trainer-item" style="height:440px">
+                            <div class="image-thumb">
+                                <img src="~/uploads/@item.FrontImage1" alt="" style="height:238px">
+                            </div>
+                            <div class="down-content">
+                                <span style="font-size:18px">
+                                    $@item.Price.ToString("N2")
+                                </span>
+
+                                <h4>@item.ModelName</h4>
+
+                                <p>
+                                    <i class="fa fa-dashboard"></i> @item.Speed knots &nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-cube"></i> @item.Range Hours &nbsp;&nbsp;&nbsp;
+                                </p>
+
+                                <ul class="social-icons" style="float:right;font-size:13px;">
+                                    <li><a asp-action="SingleDetail" asp-controller="Aircraft" asp-route-id="@item.AircraftId">+ More Details</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+                num++;
+                }
+            }
+
+            
+        </div>
+
+        <br>
+
+        <div class="main-button text-center">
+            <a asp-action="ListView" asp-controller="Aircraft" class="btnblue">View Aircrafts</a>
+        </div>
+    </div>
+</section>
+<!-- ***** Cars Ends ***** -->
+<!-- ***** Call to Action Start ***** -->
+<section class="section section-bg" id="call-to-action"
+         style="background-image: url(~/web/assets/images/banner-image-1-1920x500.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <h2>Send us a <em>message</em></h2>
+                    <p>
+                        Your Gateway to Seamless Aviation Solutions! We're here to answer your inquiries and make
+                        your aircraft dreams take
+                        flight
+                    </p>
+                    <div class="main-button">
+                        <a asp-action="About" asp-controller="Home" class="btnblue">Contact us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Call to Action End ***** -->
+<!-- ***** Testimonials Item Start ***** -->
+

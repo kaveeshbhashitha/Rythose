@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Order Report";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $("#reportManagement").addClass("active");
+        $("#order_rep").addClass("active");
+        $("#reportManagementBlock").css("display", "block");
+    });
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Order Report</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>Raythos Order List Report</p>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <p class="text-muted font-13 m-b-30">
+                                        Select a Month
+                                    </p>
+                                    <input class="form-control" style="width:300px" type="month"
+                                           name="FilterMonth" id="FilterMonth"
+                                           onChange="filter_report(this.value)">
+                                    <hr>
+
+                                    <table id="datatable-buttons" class="table table-striped" style="width:100%">
+                                        <thead style="background-color: #006666;color:white">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Order Date</th>
+                                                <th>Aircraft</th>
+                                                <th>Customer</th>
+                                                <th>Seating <br> Option</th>
+                                                <th>Interior <br> Design</th>
+                                                <th>Connectivity <br> Option</th>
+                                                <th>Entertaintment <br> Option</th>
+                                                <th>Shipped <br> Date</th>
+                                                <th>Delivery <br> Completed</th>
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody id="reportTableBody">
+                                            @{ int no = 1; }
+                                            @if (Model != null && Model.Count > 0)
+                                            {
+                                                @foreach (var orderProcess in Model)
+                                                {
+                                                    string dateString = orderProcess.OrderDate;
+                                                    string result = dateString.Substring(0, 7);
+
+                                                    <tr class="@result">
+                                                        <td>@no</td>
+                                                        <td>@orderProcess.Aircraft.ModelName</td>
+                                                        <td>@orderProcess.OrderDate</td>
+                                                        <td>@orderProcess.Customer.FullName</td>
+                                                        <td>@orderProcess.SeatingOption.SubCategoryName</td>
+                                                        <td>@orderProcess.InteriorDesign.SubCategoryName</td>
+                                                        <td>@orderProcess.ConnectivityOption.SubCategoryName</td>
+                                                        <td>@orderProcess.EntertainmentOption.SubCategoryName</td>
+                                                        <td>@orderProcess.ShippedDate</td>
+                                                        <td>@orderProcess.ActualDate</td>
+                                                    </tr>
+                                                    no++;
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function filter_report(selectedMonth) {
+        $('#reportTableBody tr').hide();
+        $('#reportTableBody tr.' + selectedMonth).show();
+    }
+</script>

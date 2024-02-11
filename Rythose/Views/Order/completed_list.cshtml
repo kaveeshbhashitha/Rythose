@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Completed Order List";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-d3I2RTOmVbKA9taV4ZabVYqq7Hg9yQr8ZfNlSlaKt/aPP6rDQa4fP+JFMEbfH1A" crossorigin="anonymous">
+
+<script>
+    $(document).ready(function () {
+        $("#orderManagement").addClass("active");
+        $("#shipping_list").addClass("active");
+        $("#orderManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Order List</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>Sold Out Aircraft List</p>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <p class="text-muted font-13 m-b-30">
+                                        List of Successfully completed customer aircraft orders.
+                                    </p>
+                                    <table id="datatable" class="table table-striped" style="width:100%">
+                                        <thead style="background-color: #006666;color:white">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Aircraft</th>
+                                                <th>Customer</th>
+                                                <th>Seating <br> Option</th>
+                                                <th>Interior <br> Design</th>
+                                                <th>Connectivity <br> Option</th>
+                                                <th>Entertaintment <br> Option</th>
+                                                <th>Total Price</th>
+                                                <th>Invoice</th>
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            @if (Model != null && Model.Count > 0)
+                                            {
+                                                @foreach (var orderProcess in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@GetFormattedOrderId(orderProcess.OrderId)</td>
+                                                        <td>@orderProcess.Aircraft.ModelName</td>
+                                                        <td>@orderProcess.Customer.FullName</td>
+                                                        <td>@orderProcess.SeatingOption.SubCategoryName <br> <b>$@orderProcess.SeatingPrice.ToString("N2")</b></td>
+                                                        <td>@orderProcess.InteriorDesign.SubCategoryName <br> <b>$@orderProcess.InteriorPrice.ToString("N2")</b></td>
+                                                        <td>@orderProcess.ConnectivityOption.SubCategoryName <br> <b>$@orderProcess.ConnectivityPrice.ToString("N2")</b></td>
+                                                        <td>
+                                                            @orderProcess.EntertainmentOption.SubCategoryName <br>
+                                                            <b>$@orderProcess.EntertainmentPrice.ToString("N2")</b>
+                                                        </td>
+                                                        <td><b>$@orderProcess.FinalAmount.ToString("N2")</b></td>
+                                                        <td style="text-align:center"><a target='_blank' asp-route-id="@orderProcess.OrderId" asp-controller="Order" asp-action="Invoice"><i class="fa fa-eye"></i></a></td>
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->
+@functions {
+    // Helper function to format the OrderId as "RAA0001", "RAA0002", etc.
+    public string GetFormattedOrderId(int orderId)
+    {
+        return $"RAA{orderId:D4}";
+    }
+}

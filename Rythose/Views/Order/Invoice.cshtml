@@ -1,0 +1,84 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="~/admin/invoice/style.css" media="all" />
+</head>
+<body onload="print()">
+    <header class="clearfix">
+        <div id="logo">
+            <img src="~/admin/invoice/logo.png">
+        </div>
+        <h1>ORDER INVOICE</h1>
+        <div id="company" class="clearfix">
+            <div>Raythos Aerospace</div>
+            <div>455 Foggy Heights,<br /> AZ 85004, US</div>
+            <div>(602) 519-0450</div>
+            <div><a>support@raythose.com</a></div>
+        </div>
+        <div id="project">
+            <div><span>CLIENT</span> @Model.Customer.FullName</div>
+            <div><span>ADDRESS</span> @Model.Customer.Address, @Model.Customer.City, @Model.Customer.Country</div>
+            <div><span>EMAIL</span> <a>@Model.Customer.Email</a></div>
+            <div><span>DATE</span> @Model.Order.OrderDate</div>
+        </div>
+    </header>
+    <main>
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th colspan="4" class="desc">DESCRIPTION</th>
+                    <th style="width:20%">PRICE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" class="desc">@Model.Aircraft.ModelName Airplane</td>
+                    <td class="total">$@Model.Order.AircraftPrice.ToString("N2")</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="desc">Seating Options <br /> (@Model.Manufacture.Seating)</td>
+                    <td class="total">$@Model.Order.SeatingPrice.ToString("N2")</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="desc">Interior Design <br /> (@Model.Manufacture.Interior)</td>
+                    <td class="total">$@Model.Order.InteriorPrice.ToString("N2")</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="desc">Connectivity Options <br /> (@Model.Manufacture.Connectivity)</td>
+                    <td class="total">$@Model.Order.ConnectivityPrice.ToString("N2")</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="desc">Entertaintment Options <br /> (@Model.Manufacture.Entertainment)</td>
+                    <td class="total">$@Model.Order.EntertainmentPrice.ToString("N2")</td>
+                </tr>
+                @{
+                    var subtotal = Model.Order.AircraftPrice + Model.Order.SeatingPrice + Model.Order.InteriorPrice + Model.Order.ConnectivityPrice + Model.Order.EntertainmentPrice;
+                }
+                <tr>
+                    <td colspan="4">SUBTOTAL</td>
+                    <td class="total">$@subtotal.ToString("N2")</td>
+                </tr>
+                <tr>
+                    <td colspan="4">TAX 25%</td>
+                    <td class="total">$@Model.Order.VAT.ToString("N2")</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="grand total">GRAND TOTAL</td>
+                    <td class="total">$@Model.Order.FinalAmount.ToString("N2")</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
+</body>
+</html>

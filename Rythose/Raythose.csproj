@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\gentella\**" />
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Compile Remove="wwwroot\raythos\**" />
+    <Content Remove="wwwroot\gentella\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\raythos\**" />
+    <EmbeddedResource Remove="wwwroot\gentella\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\raythos\**" />
+    <None Remove="wwwroot\gentella\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\raythos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Google.Api.Gax" Version="4.4.0" />
+    <PackageReference Include="Google.Apis" Version="1.64.0" />
+    <PackageReference Include="Google.Cloud.RecaptchaEnterprise.V1" Version="2.8.0" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Stripe.net" Version="43.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Views\Payment\" />
+    <Folder Include="wwwroot\admin\Invoice\" />
+  </ItemGroup>
+
+</Project>

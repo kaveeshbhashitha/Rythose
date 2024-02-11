@@ -1,0 +1,251 @@
+﻿@{
+    ViewData["Title"] = "Add Aircraft";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+		$("#aircraftManagement").addClass("active");
+		$("#add_aircraft").addClass("active");
+		$("#aircraftManagement_block").css("display", "block");
+    });
+
+</script>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Aircraft Register</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>New Aircraft Registration</p>
+                    </div>
+
+                    <div class="x_content">
+                        <br />
+                        <form asp-action="Register_air" asp-controller="Aircraft" id="aircraft-form" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="col-lg-12">
+                                        <label class="label-align" for="FrontImage1">
+                                            Front Image 1<span class="required" style="color: red">*</span>
+                                        </label>
+                                        <input type="file" id="FrontImage1" name="FrontImage1" required>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <br>
+                                        <label class="label-align" for="FrontImage2">
+                                            Front Image 2<span class="required" style="color: red">*</span>
+                                        </label>
+                                        <input type="file" id="FrontImage2" name="FrontImage2" required>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <br>
+                                        <label class="label-align" for="FrontImage3">
+                                            Front Image 3<span class="required" style="color: red">*</span>
+                                        </label>
+                                        <input type="file" id="FrontImage3" name="FrontImage3" required>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <br> <br>
+                                        <label class="label-align" for="InnerImage1">
+                                            Inner Image 1<span class="required" style="color: red">*</span>
+                                        </label>
+                                        <input type="file" id="InnerImage1" name="InnerImage1" required>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <br>
+                                        <label class="label-align" for="InnerImage2">
+                                            Inner Image 2<span class="required" style="color: red">*</span>
+                                        </label>
+                                        <input type="file" id="InnerImage2" name="InnerImage2" required>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <br> 
+                                        <label class="label-align" for="InnerImage1">
+                                            Inner Image 3<span class="required" style="color: red">*</span>
+                                        </label>
+                                        <input type="file" id="InnerImage3" name="InnerImage3" required>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <br> <br>
+                                        <label class="label-align" for="SeatingImage">
+                                            Seating Option<span class="required" style="color: red">*</span>
+                                        </label>
+                                        <input type="file" id="SeatingImage" name="SeatingImage" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <p>Aircraft Details</p>
+
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                            <label class="label-align" for="ModelName">
+                                                Model Name <span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="text" id="ModelName" name="ModelName" required class="form-control">
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label class="label-align" for="AircraftType">
+                                                Aircraft Type <span class="required" style="color: red">*</span>
+                                            </label>
+                                            <select id="AircraftType" name="AircraftType" class="form-control" required>
+                                                <option value=""> -Select- </option>
+                                                <option value="Light Private Jet">
+                                                    Light Private Jets
+                                                </option>
+                                                <option value="Mid-Size Private Jet">
+                                                    Mid-Size Private Jets
+                                                </option>
+                                                <option value="Super Mid-Size Private Jet">
+                                                    Super Mid-Size
+                                                    Private
+                                                    Jets
+                                                </option>
+                                                <option value="Heavy Private Jet">
+                                                    Heavy Private Jets
+                                                </option>
+                                                <option value="Turboprop Private Jet">
+                                                    Turboprop Private
+                                                    Jets
+                                                </option>
+                                                <option value="VLJ Private Jet">VLJ Private Jets</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <label class="label-align" for="Quantity">
+                                                Quantity<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="number" id="Quantity" name="Quantity" required class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label class="label-align" for="Baggage">
+                                                Baggage Capacity (cu. ft)<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="number" id="Baggage" name="Baggage" required class="form-control ">
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <label class="label-align" for="Fuel">
+                                                Fuel Burn (gph)<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="number" id="Fuel" name="Fuel" required class="form-control ">
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <label class="label-align" for="Price">
+                                                Base Selling Price ($)<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="number" id="Price" name="Price" required class="form-control ">
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <label class="label-align" for="Price">
+                                                Max Selling Price ($)<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="number" id="MaxPrice" name="MaxPrice" required class="form-control ">
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label class="label-align" for="Range">
+                                                Range (hrs)<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="text" pattern="^\d*\.?\d*$" id="Range" name="Range" required class="form-control ">
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <label class="label-align" for="Speed">
+                                                Speed (knots)<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="text" pattern="^\d*\.?\d*$" id="Speed" name="Speed" required class="form-control ">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label class="label-align" for="Passengers">
+                                                Passenger Count<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="number" id="Passengers" name="Passengers" required class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label class="label-align" for="CabinWidth">
+                                                Cabin Width (ft)<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="text" id="CabinWidth" pattern="^\d*\.?\d*$" name="CabinWidth" required class="form-control ">
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <label class="label-align" for="CabinLength">
+                                                Cabin Length (ft)<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="text" pattern="^\d*\.?\d*$" id="CabinLength" name="CabinLength" required class="form-control ">
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <label class="label-align" for="CabinHeight">
+                                                Cabin Height (ft)<span class="required" style="color: red">*</span>
+                                            </label>
+                                            <input type="text" id="CabinHeight" pattern="^\d*\.?\d*$" name="CabinHeight" required class="form-control ">
+                                        </div>
+                                    </div>
+
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <label class="label-align" for="Description">
+                                                Description <span class="required" style="color: red">*</span>
+                                            </label>
+                                            <textarea id="Description" name="Description" cols="30" rows="5" class="form-control "></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <br><br>
+                            <div class="item form-group">
+                                <br>
+                                <div class="col-md-12 col-sm-12 offset-md-12" style="text-align:right">
+                                    <button class="btn btn-primary" type="reset">Reset</button>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->

@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Aircraft Gallery";
+    Layout = "../Shared/web_layout.cshtml";
+}
+
+
+<script>
+    var myLinkElement = document.getElementById("myAccount");
+    myLinkElement.classList.toggle("active");
+</script>
+
+<!-- ***** Call to Action Start ***** -->
+<section class="section section-bg" id="call-to-action" style="background-image: url('/web/assets/images/back13.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2>Customer <em> Profile</em></h2>
+                    <p>Personalize Your User Profile</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="trainers">
+    <div class="container">
+        <br>
+        <br>
+        <div class="row">
+    <div class="col-md-3 col-sm-6" style="border-right:#808080">
+        <img src="~/web/assets/images/user.png" style="width:90%" alt="fourth muscle">
+    </div>
+            <form class="col-md-9 col-sm-12" asp-action="UpdateProfile" asp-controller="Customer" method="post">
+                <div class="row">
+    <div class="col-md-5 col-sm-6 contact-form" style="border-right:#808080">
+        
+            <h4>Personal Information</h4>
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" value="@Model.FullName" required>
+                
+                <label for="idNumber">ID Number:</label>
+                <input type="text" id="idNumber" name="idNumber" style="background-color:#f2f2f2;cursor:not-allowed" value="@Model.IdNumber" readonly>
+                
+                <label for="licenseCard">License Card:</label>
+                <input type="text" id="licenseCard" name="licenseCard" value="@Model.LicenseCard" required>
+
+                
+                <label for="address">Address:</label>
+                <textarea id="address" name="address">@Model.Address</textarea>
+
+                            <label for="shippingAddres">Shipping Address:</label>
+                            <textarea id="shippingAddres" name="shippingAddres">@Model.ShippingAddres</textarea>
+            </div>
+        </div>
+
+        <div class="col-lg-2"></div>
+
+        <div class="col-md-5 col-sm-6 contact-form">
+            <h4>Contact Details</h4>
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                            <input type="text" id="contact" name="contact" pattern="\d{11}" title="Please Enter a Valid Contact Number" value="@Model.Contact" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="@Model.Email" required>
+                
+                
+                <label for="city">Country / City:</label>
+                            <input type="text" id="city" name="city" value="@Model.City" style="background-color:#f2f2f2;cursor:not-allowed" readonly>
+                            <input type="text" id="country" name="country" value="@Model.Country" style="background-color:#f2f2f2;cursor:not-allowed" readonly>
+                
+                <label for="zipCode">Zip Code:</label>
+                            <input type="text" id="zipCode" name="zipCode" value="@Model.ZipCode" style="background-color:#f2f2f2;cursor:not-allowed" readonly>
+            </div>
+
+            <div class="main-button" style="float:right">
+                <button type="submit" style="border:1px solid #0073e6;color:white !important" class="btn btnblue">Update</button>
+            </div>
+                    </div>
+        </form>
+    </div>
+</div>
+
+    </div>
+</section>
+
+<!-- ***** Fleet Ends ***** -->

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Docs\\Top UP SE\\Application Development\\Coursework 02\\Proj\\Rythose\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{57E979AF-9F5B-4886-9A2B-1FB2078C7298}|Rythose\\Raythose.csproj|e:\\docs\\top up se\\application development\\coursework 02\\proj\\rythose\\rythose\\views\\orderprocess\\start_manufacture.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57E979AF-9F5B-4886-9A2B-1FB2078C7298}|Rythose\\Raythose.csproj|solutionrelative:rythose\\views\\orderprocess\\start_manufacture.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "start_manufacture.cshtml",
+              "DocumentMoniker": "E:\\Docs\\Top UP SE\\Application Development\\Coursework 02\\Proj\\Rythose\\Rythose\\Views\\OrderProcess\\start_manufacture.cshtml",
+              "RelativeDocumentMoniker": "Rythose\\Views\\OrderProcess\\start_manufacture.cshtml",
+              "ToolTip": "E:\\Docs\\Top UP SE\\Application Development\\Coursework 02\\Proj\\Rythose\\Rythose\\Views\\OrderProcess\\start_manufacture.cshtml",
+              "RelativeToolTip": "Rythose\\Views\\OrderProcess\\start_manufacture.cshtml",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAEgBAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-12-04T16:56:58.67Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

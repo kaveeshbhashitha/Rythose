@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Customer Preference List";
+    Layout = "../Shared/admin_layout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#customerManagement").addClass("active");
+        $("#aircraft_list").addClass("active");
+        $("#customerManagement_block").css("display", "block");
+    });
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <p>Customer Prefrence</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p style='font-size:16px;font-weight:bold'>Raythose Aircraft Ratings</p>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <p class="text-muted font-13 m-b-30">
+                                        Customer Preference Aircraft Analysis.
+                                    </p>
+                                    
+                                    <canvas id="bar-chart" width="800" height="290"></canvas>
+
+                                        <script>
+                                            var labels = @Html.Raw(Json.Serialize(ViewBag.ChartLabels));
+                                            var data = @Html.Raw(Json.Serialize(ViewBag.ChartData));
+
+                                            new Chart(document.getElementById("bar-chart"), {
+                                                type: 'bar',
+                                                data: {
+                                                    labels: labels,
+                                                    datasets: [
+                                                        {
+                                                            label: "Rating",
+                                                        backgroundColor: ["#28728F", "#0B626B", "#103464", "#5F7E8C","#28728F", "#0B626B", "#103464", "#5F7E8C","#28728F", "#0B626B", "#103464", "#5F7E8C"],
+                                                            data: data
+                                                        }
+                                                    ]
+                                                },
+                                                options: {
+                                                    legend: { display: false },
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Customer Preference Over Raythos Aircrafts'
+                                                    }
+                                                }
+                                            });
+                                        </script>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<!-- /page content -->
